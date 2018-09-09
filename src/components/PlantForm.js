@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import plantService from '../services/plantService'
 
 class PlantForm extends React.Component {
     state = {
@@ -25,6 +26,8 @@ class PlantForm extends React.Component {
 
     addPlant = (event) => {
         event.preventDefault()
+        console.log('about to create ')
+        this.props.plantService.create(this.state)
         this.props.plantCreation(
             this.state.finnishName, this.state.scientificName, this.state.description
         )
@@ -63,5 +66,4 @@ class PlantForm extends React.Component {
     }
 }
 
-
-export default connect(null, { plantCreation })(PlantForm)
+export default connect(null, { plantCreation, plantService })(PlantForm)

@@ -1,4 +1,4 @@
 /node_modules
 /build
-/config/dev.js
+/src/config/dev.js
 package-lock.json
