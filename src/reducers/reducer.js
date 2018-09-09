@@ -1,22 +1,20 @@
-// const initalState =
-//     [
-// {
-//     finnishName: 'Liekkipuu',
-//     scientificName: 'Delonix regia',
-//     description: 'Hernekasvien heimoon kuuluva runsaasti kukkiva puu.',
-//     id: 1
-// },
-// {
-//     finnishName: 'Vuoripalmu',
-//     scientificName: 'Chamaedorea elegans',
-//     description: 'Luontaisesti Meksikossa ja Guatemalassa kasvava palmupuu.',
-//     id: 2
-// }
-// ]
-import { plantsRef } from "../config/firebase";
-import { dispatch } from "redux";
+const initalState =
+    [
+        {
+            finnishName: 'Liekkipuu',
+            scientificName: 'Delonix regia',
+            description: 'Hernekasvien heimoon kuuluva runsaasti kukkiva puu.',
+            id: 1
+        },
+        {
+            finnishName: 'Vuoripalmu',
+            scientificName: 'Chamaedorea elegans',
+            description: 'Luontaisesti Meksikossa ja Guatemalassa kasvava palmupuu.',
+            id: 2
+        }
+    ]
 
-const plantReducer = (state = [], action) => {
+const plantReducer = (state = initalState, action) => {
     switch (action.type) {
         case 'NEW_PLANT':
             return [...state, action.data]

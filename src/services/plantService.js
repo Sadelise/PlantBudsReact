@@ -3,13 +3,15 @@ import { plantInitialization } from "../reducers/reducer";
 import { setPlantData } from "../components/App"
 
 const getAll = () => async dispatch => {
-    return (
-        plantsRef.once("value", snapshot => {
-            return snapshot.val()
-            const data = snapshot.val()
-            console.log("the snapshot ", snapshot.val())
-        })
-    )
+    var returnArr = []
+    plantsRef.on("value", snapshot => {
+        snapshot.val()
+        const data = snapshot.val()
+        console.log("the snapshot ", snapshot.val())
+        returnArr.push(snapshot.val());
+    })
+    console.log("result ", returnArr)
+    return returnArr;
 }
 
 
