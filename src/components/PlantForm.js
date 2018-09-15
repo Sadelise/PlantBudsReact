@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import {create} from '../services/plantService'
+import { create } from '../services/plantService'
 
 class PlantForm extends React.Component {
     state = {
@@ -27,14 +27,14 @@ class PlantForm extends React.Component {
     addPlant = (event) => {
         event.preventDefault()
         console.log('about to create ', this.props)
-       const newPlantId = this.props.create(this.state)
+        const newPlantId = this.props.create(this.state)
         this.props.plantCreation(
             newPlantId, this.state.finnishName, this.state.scientificName, this.state.description
         )
         this.reset()
     }
 
-    reset = (event) => {
+    reset = () => {
         this.setState({
             finnishName: '',
             scientificName: '',

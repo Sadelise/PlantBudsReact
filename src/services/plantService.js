@@ -1,4 +1,4 @@
-import { plantsRef } from "../config/firebase";
+import { databaseRef, plantsRef } from "../config/firebase";
 
 export const create = newPlant => async dispatch => {
     const response = await plantsRef.push()
@@ -7,6 +7,6 @@ export const create = newPlant => async dispatch => {
 };
 
 export const deletePlant = deletedPlantId => async dispatch => {
-    plantsRef.child(deletedPlantId).remove();
+    await databaseRef.child(`plants/${deletedPlantId}`).remove();
 };
 
