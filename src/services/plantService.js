@@ -1,28 +1,12 @@
 import { plantsRef } from "../config/firebase";
-import { plantInitialization } from "../reducers/reducer";
-import { setPlantData } from "../components/App"
 
-const getAll = () => async dispatch => {
-    var returnArr = []
-    plantsRef.on("value", snapshot => {
-        snapshot.val()
-        const data = snapshot.val()
-        console.log("the snapshot ", snapshot.val())
-        returnArr.push(snapshot.val());
-    })
-    console.log("result ", returnArr)
-    return returnArr;
-}
-
-
-
-const create = newPlant => async dispatch => {
-    console.log('creating plant')
-    plantsRef.push().set(newPlant);
+export const create = newPlant => async dispatch => {
+    const response = await plantsRef.push()
+    await response.set(newPlant)
+    return response.key
 };
 
-const deletePlant = deletedPlantId => async dispatch => {
+export const deletePlant = deletedPlantId => async dispatch => {
     plantsRef.child(deletedPlantId).remove();
 };
 
-export default { getAll, create, deletePlant }
