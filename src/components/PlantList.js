@@ -10,7 +10,8 @@ class PlantList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            filterBy: ''
+            filterBy: '',
+            plantIsChosen: ''
         }
     }
 
@@ -24,12 +25,18 @@ class PlantList extends React.Component {
 
     filterByName = (name) => {
         if (name !== undefined) {
-            this.setState({ filterBy: name })
+            this.setState({
+                filterBy: name,
+                plantIsChosen: true
+            })
         }
     }
 
     clearFilter = (event) => {
-        this.setState({ filterBy: '' })
+        this.setState({
+            filterBy: '',
+            plantIsChosen: false
+        })
     }
 
     render() {
@@ -55,7 +62,8 @@ class PlantList extends React.Component {
                             <Grid key={plant.id} item xs={12} sm={6} lg={4} xl={3}>
                                 <Plant plant={plant}
                                     deletePlant={this.deletePlant}
-                                    filterByName={this.filterByName} />
+                                    filterByName={this.filterByName}
+                                    plantIsChosen={this.state.plantIsChosen} />
                             </Grid>
                         ))}
                     </Grid>

@@ -6,8 +6,10 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
-const Plant = ({ plant, deletePlant, filterByName }) => {
-  // console.log('Plant ', plant)
+const Plant = ({ plant, deletePlant, filterByName, plantIsChosen }) => {
+  const showWhenVisible = { display: plantIsChosen ? '' : 'none' }
+  const googleAddress = `https://www.google.fi/search?q=${plant.finnishName}`
+
   return (
     <div onClick={() => filterByName(plant.finnishName)}>
       {plant ? (
@@ -23,9 +25,12 @@ const Plant = ({ plant, deletePlant, filterByName }) => {
             <Typography component="p">
               {plant.description}
             </Typography>
+            <Typography component="p" style={showWhenVisible}>
+              {plant.scientificName}
+            </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" color="primary" href='https://www.google.fi/' target="_blank">
+            <Button size="small" color="primary" href={googleAddress} target="_blank">
               Google the Plant
                     </Button>
           </CardActions>
