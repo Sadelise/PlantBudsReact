@@ -6,10 +6,10 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
-const Plant = ({ plant, deletePlant }) => {
+const Plant = ({ plant, deletePlant, filterByName }) => {
   // console.log('Plant ', plant)
   return (
-    <div>
+    <div onClick={() => filterByName(plant.finnishName)}>
       {plant ? (
         <Card key={plant.id}>
           <CardMedia style={{ height: 0, paddingTop: '80%' }}

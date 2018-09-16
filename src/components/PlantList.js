@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Grid from '@material-ui/core/Grid';
 import { deletePlant } from '../services/plantService'
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class PlantList extends React.Component {
     constructor(props) {
@@ -27,6 +28,10 @@ class PlantList extends React.Component {
         }
     }
 
+    clearFilter = (event) => {
+        this.setState({ filterBy: '' })
+    }
+
     render() {
         const plantsToShow =
             this.state.filterBy === '' ?
@@ -38,10 +43,12 @@ class PlantList extends React.Component {
                 <div>
                     <TextField style={{ padding: 24 }}
                         id="searchInput"
-                        placeholder="Search for Plants"
+                        placeholder="Etsi kasvia"
                         margin="normal"
                         onChange={this.onSearchInputChange}
                     />
+
+                    <Button variant="contained" color="secondary" type="reset" onClick={this.clearFilter}>Näytä kaikki</Button>
 
                     <Grid container spacing={24} style={{ padding: 24 }}>
                         {plantsToShow.map(plant => (
