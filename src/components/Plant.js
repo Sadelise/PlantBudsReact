@@ -23,11 +23,16 @@ const Plant = ({ plant, deletePlant, filterByName, plantIsChosen }) => {
               {plant.finnishName}
             </Typography>
             <Typography component="p">
-              {plant.description}
-            </Typography>
-            <Typography component="p" style={showWhenVisible}>
               {plant.scientificName}
             </Typography>
+            <div style={showWhenVisible}>
+              <Typography component="p">
+                {plant.description}
+              </Typography>
+              <Typography component="p">
+                Tyyppi:{plant.plantType}
+              </Typography>
+            </div>
           </CardContent>
           <CardActions>
             <Button size="small" color="primary" href={googleAddress} target="_blank">

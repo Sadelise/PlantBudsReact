@@ -19,7 +19,6 @@ const plantReducer = (state = [], action) => {
         case 'NEW_PLANT':
             return [...state, action.data]
         case 'INIT_PLANTS':
-            console.log("reducer data ", action.data)
             return action.data;
         default:
             return state
@@ -39,7 +38,6 @@ export const plantCreation = (id, finnishName, scientificName, description) => {
 }
 
 export const plantInitialization = (data) => {
-    console.log("data ", data)
     return {
         type: 'INIT_PLANTS',
         data

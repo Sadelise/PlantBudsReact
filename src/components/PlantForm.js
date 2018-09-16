@@ -6,22 +6,21 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import { create } from '../services/plantService'
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from '@material-ui/core/FormLabel';
 
 class PlantForm extends React.Component {
     state = {
         finnishName: '',
         scientificName: '',
-        description: ''
+        description: '',
+        plantType: ''
     };
 
     handleChange = (event) => {
-        if (event.target.name === 'finnishName') {
-            this.setState({ finnishName: event.target.value })
-        } else if (event.target.name === 'scientificName') {
-            this.setState({ scientificName: event.target.value })
-        } if (event.target.name === 'description') {
-            this.setState({ description: event.target.value })
-        }
+        this.setState({ [event.target.name]: event.target.value })
     }
 
     addPlant = (event) => {
@@ -57,6 +56,20 @@ class PlantForm extends React.Component {
                     <FormControl >
                         <InputLabel htmlFor="name-simple">Kuvaus</InputLabel>
                         <Input name="description" value={this.state.description} id="name-simple" onChange={this.handleChange} />
+                    </FormControl>
+
+                                        <FormControl component="fieldset">
+                        <FormLabel component="legend">Kasvin tyyppi</FormLabel>
+                        <RadioGroup
+                            aria-label="Kasvin tyyppi"
+                            name="plantType"
+                            value={this.state.plantType}
+                            onChange={this.handleChange}
+                        >
+                            <FormControlLabel value="mehikasvi" control={<Radio />} label="mehikasvi" />
+                            <FormControlLabel value="palmu" control={<Radio />} label="palmu" />
+                            <FormControlLabel value="köynnös" control={<Radio />} label="köynnös" />
+                        </RadioGroup>
                     </FormControl>
                     <Button variant="contained" color="primary" type="submit">lisää</Button>
                     <Button variant="contained" color="secondary" type="reset" onClick={this.reset}>tyhjennä</Button>

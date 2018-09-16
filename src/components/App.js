@@ -5,7 +5,7 @@ import NavBar from './NavBar'
 import { connect } from 'react-redux'
 import { plantInitialization } from '../reducers/reducer'
 import { plantsRef } from "../config/firebase";
-
+import IdentificationForm from './IdentificationForm';
 class App extends React.Component {
 
     componentWillMount = async () => {
@@ -25,6 +25,7 @@ class App extends React.Component {
             <div>
                 <NavBar />
                 <PlantForm />
+                <IdentificationForm />
                 <ConnectedPlantList />
             </div >
         )
