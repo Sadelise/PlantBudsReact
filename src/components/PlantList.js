@@ -52,6 +52,7 @@ class PlantList extends React.Component {
                         id="searchInput"
                         placeholder="Etsi kasvia"
                         margin="normal"
+                        value={this.state.filterBy}
                         onChange={this.onSearchInputChange}
                     />
 
