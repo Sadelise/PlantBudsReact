@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import { plantInitialization } from '../reducers/reducer'
 import { plantsRef } from "../config/firebase";
 import IdentificationForm from './IdentificationForm';
+import LoginForm from './LoginForm';
+
 class App extends React.Component {
 
     componentWillMount = async () => {
@@ -21,15 +23,33 @@ class App extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                <NavBar />
-                <PlantForm />
-                <IdentificationForm />
-                <ConnectedPlantList />
-            </div >
-        )
+        console.log("this.props.owner ", this.props.owner)
+   
+        if (this.props.owner.length <= 0) {
+            return (
+                <div>
+                    <NavBar />
+                    <LoginForm />
+                    <ConnectedPlantList />
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <NavBar />
+                    <PlantForm />
+                    <IdentificationForm />
+                    <ConnectedPlantList />
+                </div >
+            )
+        }
     }
 }
 
-export default connect(null, { plantInitialization })(App)
+const mapStateToProps = (state) => {
+    return {
+        owner: state.owner
+    }
+}
+
+export default connect(mapStateToProps, { plantInitialization })(App)
