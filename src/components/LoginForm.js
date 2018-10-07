@@ -32,6 +32,7 @@ class LoginForm extends React.Component {
         console.log("logging out")
         event.preventDefault()
         this.props.logoutFirebase(this.state)
+        this.props.setOwner(null)
         this.reset()
     }
 
@@ -57,44 +58,56 @@ class LoginForm extends React.Component {
     render() {
         const showWhenVisible = { display: this.state.showRegistration ? '' : 'none' }
         const hideWhenVisible = { display: this.state.showRegistration ? 'none' : '' }
+        const showWhenLoggedIn = { display: this.props.owner !== null ? '' : 'none' }
+        const hideWhenLoggedIn = { display: this.props.owner !== null ? 'none' : '' }
 
         return (
             <div>
-                <div style={hideWhenVisible}>
-                    <form onSubmit={this.login}>
-                        <FormControl >
-                            <InputLabel htmlFor="name-simple">Sähköpostiosoite</InputLabel>
-                            <Input name="email" value={this.state.email} id="name-simple" onChange={this.handleChange} />
-                        </FormControl>
-                        <FormControl >
-                            <InputLabel htmlFor="name-simple">Salasana</InputLabel>
-                            <Input name="password" value={this.state.password} id="name-simple" onChange={this.handleChange} />
-                        </FormControl>
-                        <Button variant="contained" color="primary" type="submit">Kirjaudu sisään</Button>
-                        <Button variant="contained" color="primary" type="submit" onClick={this.showRegistration}>Rekisteröidy</Button>
-                        <Button variant="contained" color="primary" type="submit" onClick={this.logout}>Kirjaudu ulos</Button>
-                    </form>
+                <div style={showWhenLoggedIn}>
+                    <Button variant="contained" color="primary" type="submit" onClick={this.logout}>Kirjaudu ulos</Button>
                 </div>
-                <div style={showWhenVisible}>
-                    <form onSubmit={this.register}>
-                        <FormControl >
-                            <InputLabel htmlFor="name-simple">Sähköpostiosoite</InputLabel>
-                            <Input name="email" value={this.state.email} id="name-simple" onChange={this.handleChange} />
-                        </FormControl>
-                        <FormControl >
-                            <InputLabel htmlFor="name-simple">Salasana</InputLabel>
-                            <Input name="password" value={this.state.password} id="name-simple" onChange={this.handleChange} />
-                        </FormControl>
-                        <FormControl >
-                            <InputLabel htmlFor="name-simple">Toista salasana</InputLabel>
-                            <Input name="repeatedpassword" value={this.state.repeatedpassword} id="name-simple" onChange={this.handleChange} />
-                        </FormControl>
-                        <Button variant="contained" color="primary" type="submit">Rekisteröidy</Button>
-                    </form>
+                <div style={hideWhenLoggedIn}>
+                    <div style={hideWhenVisible}>
+                        <form onSubmit={this.login}>
+                            <FormControl >
+                                <InputLabel htmlFor="name-simple">Sähköpostiosoite</InputLabel>
+                                <Input name="email" value={this.state.email} id="name-simple" onChange={this.handleChange} />
+                            </FormControl>
+                            <FormControl >
+                                <InputLabel htmlFor="name-simple">Salasana</InputLabel>
+                                <Input name="password" value={this.state.password} id="name-simple" onChange={this.handleChange} />
+                            </FormControl>
+                            <Button variant="contained" color="primary" type="submit">Kirjaudu sisään</Button>
+                            <Button variant="contained" color="primary" type="submit" onClick={this.showRegistration}>Rekisteröidy</Button>
+                        </form>
+                    </div>
+                    <div style={showWhenVisible}>
+                        <form onSubmit={this.register}>
+                            <FormControl >
+                                <InputLabel htmlFor="name-simple">Sähköpostiosoite</InputLabel>
+                                <Input name="email" value={this.state.email} id="name-simple" onChange={this.handleChange} />
+                            </FormControl>
+                            <FormControl >
+                                <InputLabel htmlFor="name-simple">Salasana</InputLabel>
+                                <Input name="password" value={this.state.password} id="name-simple" onChange={this.handleChange} />
+                            </FormControl>
+                            <FormControl >
+                                <InputLabel htmlFor="name-simple">Toista salasana</InputLabel>
+                                <Input name="repeatedpassword" value={this.state.repeatedpassword} id="name-simple" onChange={this.handleChange} />
+                            </FormControl>
+                            <Button variant="contained" color="primary" type="submit">Rekisteröidy</Button>
+                        </form>
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-export default connect(null, { setOwner, create, loginFirebase, logoutFirebase })(LoginForm)
+const mapStateToProps = (state) => {
+    return {
+        owner: state.owner
+    }
+}
+
+export default connect(mapStateToProps, { setOwner, create, loginFirebase, logoutFirebase })(LoginForm)

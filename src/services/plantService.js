@@ -11,3 +11,4 @@ export const deletePlant = deletedPlantId => async dispatch => {
         [deletedPlantId]: null
     })
 }
+

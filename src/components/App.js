@@ -6,13 +6,12 @@ import { connect } from 'react-redux'
 import { plantInitialization } from '../reducers/reducer'
 import { plantsRef } from "../config/firebase";
 import IdentificationForm from './IdentificationForm';
-import LoginForm from './LoginForm';
 import { setOwner } from '../reducers/ownerReducer'
 import * as firebase from "firebase";
 
 class App extends React.Component {
 
-    componentDidMount() {
+    componentWillMount() {
         plantsRef.on("value", snapshot => {
             var plants = [];
             snapshot.forEach(function (childSnapshot) {
@@ -23,24 +22,21 @@ class App extends React.Component {
             this.props.plantInitialization(plants)
         })
 
+        var context = this.props
         firebase.auth().onAuthStateChanged(function (user) {
-            console.log("firebase auth called")
             if (user) {
-                setOwner(user.email)
+                context.setOwner(user.email)
             } else {
-                setOwner(null)
+                context.setOwner(null)
             }
         });
     }
 
     render() {
-        console.log("this.props.owner ", this.props.owner)
-
-        if (this.props.owner.length <= 0) {
+        if (this.props.owner == null) {
             return (
                 <div>
                     <NavBar />
-                    <LoginForm />
                     <ConnectedPlantList />
                 </div>
             )

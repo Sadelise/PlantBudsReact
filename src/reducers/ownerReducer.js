@@ -10,9 +10,7 @@ const ownerReducer = (state = [], action) => {
 export const setOwner = (email) => {
     return {
         type: 'SET_OWNER',
-        data: {
-            user: email
-        }
+        data: email
     }
 }
 
