@@ -10,6 +10,9 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
 
 class PlantForm extends React.Component {
     state = {
@@ -17,7 +20,15 @@ class PlantForm extends React.Component {
         scientificName: '',
         description: '',
         plantType: '',
-        imagelink: ''
+        imagelink: '',
+        leafShape: '',
+        colors: {
+            darkGreen: false,
+            lightGreen: false,
+            silver: false,
+            pink: false,
+            white: false
+        },
     };
 
     handleChange = (event) => {
@@ -39,11 +50,37 @@ class PlantForm extends React.Component {
             finnishName: '',
             scientificName: '',
             description: '',
-            imagelink: ''
+            imagelink: '',
+            leafShape: '',
+            colors: {
+                darkGreen: false,
+                lightGreen: false,
+                silver: false,
+                pink: false,
+                white: false
+            },
         });
     }
 
+    handleCheckboxChange = (event, color) => {
+        var newColors = this.state.colors
+        if (color === 'darkGreen') {
+            newColors.darkGreen = event.target.checked
+        } else if (color === 'lightGreen') {
+            newColors.lightGreen = event.target.checked
+        } else if (color === 'silver') {
+            newColors.silver = event.target.checked
+        } else if (color === 'pink') {
+            newColors.pink = event.target.checked
+        } else if (color === 'white') {
+            newColors.white = event.target.checked
+        }
+        this.setState({ colors: newColors });
+    }
+
     render() {
+        const { darkGreen, lightGreen, silver, pink, white } = this.state.colors;
+
         return (
             <div>
                 <form onSubmit={this.addPlant}>
@@ -74,7 +111,60 @@ class PlantForm extends React.Component {
                             <FormControlLabel value="mehikasvi" control={<Radio />} label="mehikasvi" />
                             <FormControlLabel value="palmu" control={<Radio />} label="palmu" />
                             <FormControlLabel value="köynnös" control={<Radio />} label="köynnös" />
+                            <FormControlLabel value="ei mikään näistä" control={<Radio />} label="ei mikään näistä" />
                         </RadioGroup>
+                    </FormControl>
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">Lehden muoto</FormLabel>
+                        <RadioGroup
+                            aria-label="Lehden muoto"
+                            name="leafShape"
+                            value={this.state.leafShape}
+                            onChange={this.handleChange}
+                        >
+                            <FormControlLabel value="vastapuikea" control={<Radio />} label="vastapuikea" />
+                            <FormControlLabel value="puikea" control={<Radio />} label="puikea" />
+                            <FormControlLabel value="pyöreä" control={<Radio />} label="pyöreä" />
+                            <FormControlLabel value="herttamainen" control={<Radio />} label="herttamainen" />
+                            <FormControlLabel value="pitkänomainen" control={<Radio />} label="pitkänomainen" />
+                            <FormControlLabel value="ei mikään näistä" control={<Radio />} label="ei mikään näistä" />
+                        </RadioGroup>
+                    </FormControl>
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">Lehdessä esiintyy seuraavia värejä:</FormLabel>
+                        <FormGroup>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox checked={darkGreen} onChange={(event) => this.handleCheckboxChange(event, 'darkGreen')} value="darkGreen" />
+                                }
+                                label="Tummanvihreä"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Checkbox checked={lightGreen} onChange={(event) => this.handleCheckboxChange(event, 'lightGreen')} value="lightGreen" />
+                                }
+                                label="Vaaleanvihreä"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Checkbox checked={silver} onChange={(event) => this.handleCheckboxChange(event, 'silver')} value="silver" />
+                                }
+                                label="Hopea"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Checkbox checked={pink} onChange={(event) => this.handleCheckboxChange(event, 'pink')} value="pink" />
+                                }
+                                label="Vaaleanpunainen"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Checkbox checked={white} onChange={(event) => this.handleCheckboxChange(event, 'white')} value="white" />
+                                }
+                                label="Valkoinen"
+                            />
+                        </FormGroup>
+                        <FormHelperText>Voit valita useita</FormHelperText>
                     </FormControl>
                     <Button variant="contained" color="primary" type="submit">lisää</Button>
                     <Button variant="contained" color="secondary" type="reset" onClick={this.reset}>tyhjennä</Button>

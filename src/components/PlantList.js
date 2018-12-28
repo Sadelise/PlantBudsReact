@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import { deletePlant } from '../services/plantService'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { filterChange } from '../reducers/filterReducer'
+
 
 class PlantList extends React.Component {
     constructor(props) {
@@ -21,6 +23,8 @@ class PlantList extends React.Component {
 
     onSearchInputChange = (event) => {
         this.setState({ filterBy: event.target.value })
+        var list = this.props.plants.filter(plant => plant.finnishName.toLowerCase().indexOf(this.state.filterBy.toLowerCase()) > -1)
+        this.props.filterChange(list)
     }
 
     filterByName = (name) => {
@@ -37,13 +41,18 @@ class PlantList extends React.Component {
             filterBy: '',
             plantIsChosen: false
         })
+        var list = []
+        this.props.filterChange(list)
     }
 
     render() {
+        console.log("filter ", this.props)
+        console.log("mi plants ", this.props.plants)
         const plantsToShow =
-            this.state.filterBy === '' ?
+            // this.state.filterBy === '' ?
+            this.props.filter.length <= 0 ?
                 this.props.plants :
-                this.props.plants.filter(plant => plant.finnishName.toLowerCase().indexOf(this.state.filterBy.toLowerCase()) > -1)
+                this.props.filter
 
         return (
             <div>
@@ -76,9 +85,10 @@ class PlantList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        plants: state.plants
+        plants: state.plants,
+        filter: state.filter
     }
 }
 
-const ConnectedPlantList = connect(mapStateToProps, { deletePlant })(PlantList)
+const ConnectedPlantList = connect(mapStateToProps, { deletePlant, filterChange })(PlantList)
 export default ConnectedPlantList

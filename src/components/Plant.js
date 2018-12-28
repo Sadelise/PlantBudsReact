@@ -5,13 +5,12 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import { isNullOrUndefined } from 'util';
 
 const Plant = ({ plant, deletePlant, filterByName, plantIsChosen }) => {
   const showWhenVisible = { display: plantIsChosen ? '' : 'none' }
   const googleAddress = `https://www.google.fi/search?q=${plant.finnishName}`
   var imageAddress = plant.imagelink
-  if (imageAddress === null || imageAddress === undefined) {
+  if (imageAddress === null || imageAddress === undefined || imageAddress === '') {
     imageAddress = 'https://www.publicdomainpictures.net/pictures/150000/velka/tropical-green-plants.jpg';
   }
 
@@ -35,7 +34,10 @@ const Plant = ({ plant, deletePlant, filterByName, plantIsChosen }) => {
                 {plant.description}
               </Typography>
               <Typography component="p">
-                Tyyppi:{plant.plantType}
+                Tyyppi: {plant.plantType}
+              </Typography>
+              <Typography component="p">
+                Lehden muoto: {plant.leafShape}
               </Typography>
             </div>
           </CardContent>
