@@ -5,10 +5,15 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import { isNullOrUndefined } from 'util';
 
 const Plant = ({ plant, deletePlant, filterByName, plantIsChosen }) => {
   const showWhenVisible = { display: plantIsChosen ? '' : 'none' }
   const googleAddress = `https://www.google.fi/search?q=${plant.finnishName}`
+  var imageAddress = plant.imagelink
+  if (imageAddress === null || imageAddress === undefined) {
+    imageAddress = 'https://www.publicdomainpictures.net/pictures/150000/velka/tropical-green-plants.jpg';
+  }
 
   return (
     <div onClick={() => filterByName(plant.finnishName)}>
@@ -16,7 +21,7 @@ const Plant = ({ plant, deletePlant, filterByName, plantIsChosen }) => {
         <Card key={plant.id}>
           <CardMedia style={{ height: 0, paddingTop: '80%' }}
             title={plant.finnishName}
-            image='https://www.publicdomainpictures.net/pictures/150000/velka/tropical-green-plants.jpg'
+            image={imageAddress}
           />
           <CardContent>
             <Typography gutterBottom variant="headline" component="h2">

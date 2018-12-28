@@ -16,7 +16,8 @@ class PlantForm extends React.Component {
         finnishName: '',
         scientificName: '',
         description: '',
-        plantType: ''
+        plantType: '',
+        imagelink: ''
     };
 
     handleChange = (event) => {
@@ -28,7 +29,7 @@ class PlantForm extends React.Component {
         console.log('about to create ', this.props)
         const newPlantId = this.props.create(this.state)
         this.props.plantCreation(
-            newPlantId, this.state.finnishName, this.state.scientificName, this.state.description
+            newPlantId, this.state.finnishName, this.state.scientificName, this.state.description, this.state.imagelink
         )
         this.reset()
     }
@@ -37,7 +38,8 @@ class PlantForm extends React.Component {
         this.setState({
             finnishName: '',
             scientificName: '',
-            description: ''
+            description: '',
+            imagelink: ''
         });
     }
 
@@ -57,8 +59,11 @@ class PlantForm extends React.Component {
                         <InputLabel htmlFor="name-simple">Kuvaus</InputLabel>
                         <Input name="description" value={this.state.description} id="name-simple" onChange={this.handleChange} />
                     </FormControl>
-
-                                        <FormControl component="fieldset">
+                    <FormControl >
+                        <InputLabel htmlFor="name-simple">Linkki kuvaan</InputLabel>
+                        <Input name="imagelink" value={this.state.imagelink} id="name-simple" onChange={this.handleChange} />
+                    </FormControl>
+                    <FormControl component="fieldset">
                         <FormLabel component="legend">Kasvin tyyppi</FormLabel>
                         <RadioGroup
                             aria-label="Kasvin tyyppi"
