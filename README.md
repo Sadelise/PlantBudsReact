@@ -1,9 +1,9 @@
 # PlantBudsReact
 
-[Go to be application](https://plantbuds.herokuapp.com/)  
+[Go to the application](https://plantbuds.herokuapp.com/)  
 
-Test user credentials:
-username: kukka-maaria@kukkis.fi
+Test user credentials:  
+username: kukka-maaria@kukkis.fi  
 password: kukka123
 
 Platform for sharing information and pictures about house plants for hobbyists. 
