@@ -9,5 +9,7 @@
 | 16.09 | 3 | Listan filtteröinti, hakulomake |
 | 22.09. | 4.5 | Login, logout, reduxin ja storen säätöä (bugin metsästystä...) |
 | 07.10. | 2 | Login toimimaan järkevämmin, form yläpalkkiin, nappien näkyvyys
+| 28.12. | 5.5 | Ympäristömuuttujat, deploy herokuun, herokussa ilmenevän bugin korjaus, kuvalinkin lisäys, tunnistusformin lisäys nappeineen, tunnistuksen filtteröinti, filtteröinti reducerin kautta |
 
-Yhteensä: 27.5 h
+
+Yhteensä: 33 h
