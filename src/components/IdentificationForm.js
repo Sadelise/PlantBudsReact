@@ -103,7 +103,6 @@ class IdentificationForm extends React.Component {
     }
 
     show = () => {
-        console.log('showww ', this.state.showForm)
         if (this.state.showForm === true) {
             this.setState({
                 showForm: false
@@ -121,82 +120,79 @@ class IdentificationForm extends React.Component {
         const { darkGreen, lightGreen, silver, pink, white } = this.state.colors;
 
         return (
-            <div>
-                <div style={showWhenVisible}>
-                    <form onSubmit={this.identify}>
-                        <FormControl component="fieldset">
-                            <FormLabel component="legend">Lehdessä esiintyy seuraavia värejä:</FormLabel>
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox checked={darkGreen} onChange={(event) => this.handleCheckboxChange(event, 'darkGreen')} value="darkGreen" />
-                                    }
-                                    label="Tummanvihreä"
-                                />
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox checked={lightGreen} onChange={(event) => this.handleCheckboxChange(event, 'lightGreen')} value="lightGreen" />
-                                    }
-                                    label="Vaaleanvihreä"
-                                />
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox checked={silver} onChange={(event) => this.handleCheckboxChange(event, 'silver')} value="silver" />
-                                    }
-                                    label="Hopea"
-                                />
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox checked={pink} onChange={(event) => this.handleCheckboxChange(event, 'pink')} value="pink" />
-                                    }
-                                    label="Vaaleanpunainen"
-                                />
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox checked={white} onChange={(event) => this.handleCheckboxChange(event, 'white')} value="white" />
-                                    }
-                                    label="Valkoinen"
-                                />
-                            </FormGroup>
-                            <FormHelperText>Voit valita useita</FormHelperText>
-                        </FormControl>
-                        <FormControl component="fieldset">
-                            <FormLabel component="legend">Kasvin tyyppi</FormLabel>
-                            <RadioGroup
-                                aria-label="Kasvin tyyppi"
-                                name="plantType"
-                                value={this.state.plantType}
-                                onChange={this.handleChange}
-                            >
-                                <FormControlLabel value="mehikasvi" control={<Radio />} label="mehikasvi" />
-                                <FormControlLabel value="palmu" control={<Radio />} label="palmu" />
-                                <FormControlLabel value="köynnös" control={<Radio />} label="köynnös" />
-                                <FormControlLabel value="ei mikään näistä" control={<Radio />} label="ei mikään näistä" />
-                            </RadioGroup>
-                        </FormControl>
-                        <FormControl component="fieldset">
-                            <FormLabel component="legend">Lehden muoto</FormLabel>
-                            <RadioGroup
-                                aria-label="Lehden muoto"
-                                name="leafShape"
-                                value={this.state.leafShape}
-                                onChange={this.handleChange}
-                            >
-                                <FormControlLabel value="vastapuikea" control={<Radio />} label="vastapuikea" />
-                                <FormControlLabel value="puikea" control={<Radio />} label="puikea" />
-                                <FormControlLabel value="pyöreä" control={<Radio />} label="pyöreä" />
-                                <FormControlLabel value="herttamainen" control={<Radio />} label="herttamainen" />
-                                <FormControlLabel value="pitkänomainen" control={<Radio />} label="pitkänomainen" />
-                                <FormControlLabel value="ei mikään näistä" control={<Radio />} label="ei mikään näistä" />
-                            </RadioGroup>
-                        </FormControl>
-                        <Button variant="contained" color="primary" type="submit">Hae</Button>
-                        <Button variant="contained" color="secondary" type="reset" onClick={this.reset}>tyhjennä</Button>
-                    </form>
-                </div>
-                <div>
-                    <Button variant="contained" color="secondary" type="reset" onClick={this.show}>Tunnista kasvi</Button>
-                </div>
+            <div >
+                <Button variant="contained" color="secondary" type="reset" onClick={this.show}>Tunnista kasvi</Button>
+
+                <form onSubmit={this.identify} style={showWhenVisible}>
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">Lehdessä esiintyy seuraavia värejä:</FormLabel>
+                        <FormGroup>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox checked={darkGreen} onChange={(event) => this.handleCheckboxChange(event, 'darkGreen')} value="darkGreen" />
+                                }
+                                label="Tummanvihreä"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Checkbox checked={lightGreen} onChange={(event) => this.handleCheckboxChange(event, 'lightGreen')} value="lightGreen" />
+                                }
+                                label="Vaaleanvihreä"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Checkbox checked={silver} onChange={(event) => this.handleCheckboxChange(event, 'silver')} value="silver" />
+                                }
+                                label="Hopea"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Checkbox checked={pink} onChange={(event) => this.handleCheckboxChange(event, 'pink')} value="pink" />
+                                }
+                                label="Vaaleanpunainen"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Checkbox checked={white} onChange={(event) => this.handleCheckboxChange(event, 'white')} value="white" />
+                                }
+                                label="Valkoinen"
+                            />
+                        </FormGroup>
+                        <FormHelperText>Voit valita useita</FormHelperText>
+                    </FormControl>
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">Kasvin tyyppi</FormLabel>
+                        <RadioGroup
+                            aria-label="Kasvin tyyppi"
+                            name="plantType"
+                            value={this.state.plantType}
+                            onChange={this.handleChange}
+                        >
+                            <FormControlLabel value="mehikasvi" control={<Radio />} label="mehikasvi" />
+                            <FormControlLabel value="palmu" control={<Radio />} label="palmu" />
+                            <FormControlLabel value="köynnös" control={<Radio />} label="köynnös" />
+                            <FormControlLabel value="ei mikään näistä" control={<Radio />} label="ei mikään näistä" />
+                        </RadioGroup>
+                    </FormControl>
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">Lehden muoto</FormLabel>
+                        <RadioGroup
+                            aria-label="Lehden muoto"
+                            name="leafShape"
+                            value={this.state.leafShape}
+                            onChange={this.handleChange}
+                        >
+                            <FormControlLabel value="vastapuikea" control={<Radio />} label="vastapuikea" />
+                            <FormControlLabel value="puikea" control={<Radio />} label="puikea" />
+                            <FormControlLabel value="pyöreä" control={<Radio />} label="pyöreä" />
+                            <FormControlLabel value="herttamainen" control={<Radio />} label="herttamainen" />
+                            <FormControlLabel value="pitkänomainen" control={<Radio />} label="pitkänomainen" />
+                            <FormControlLabel value="ei mikään näistä" control={<Radio />} label="ei mikään näistä" />
+                        </RadioGroup>
+                    </FormControl>
+                    <Button variant="contained" color="primary" type="submit">Hae</Button>
+                    <Button variant="contained" color="secondary" type="reset" onClick={this.reset}>tyhjennä</Button>
+                </form>
             </div>
         )
     }
