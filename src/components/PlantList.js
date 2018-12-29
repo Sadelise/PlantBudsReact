@@ -13,18 +13,26 @@ class PlantList extends React.Component {
         super(props)
         this.state = {
             filterBy: '',
-            plantIsChosen: ''
+            plantIsChosen: '',
+            fillUpdateForm: false
         }
     }
 
     deletePlant = (plant) => {
         this.props.deletePlant(plant.id)
     }
+    filter = (name) => {
+        var plantName = this.state.filterBy
+        if (name !== undefined) {
+            plantName = name
+        }
+        var list = this.props.plants.filter(plant => plant.finnishName.toLowerCase().indexOf(plantName.toLowerCase()) > -1)
+        this.props.filterChange(list)
+    }
 
     onSearchInputChange = (event) => {
         this.setState({ filterBy: event.target.value })
-        var list = this.props.plants.filter(plant => plant.finnishName.toLowerCase().indexOf(this.state.filterBy.toLowerCase()) > -1)
-        this.props.filterChange(list)
+        this.filter()
     }
 
     filterByName = (name) => {
@@ -33,7 +41,12 @@ class PlantList extends React.Component {
                 filterBy: name,
                 plantIsChosen: true
             })
+            this.filter(name)
         }
+    }
+
+    setStateLater = () => {
+
     }
 
     clearFilter = (event) => {
@@ -45,11 +58,16 @@ class PlantList extends React.Component {
         this.props.filterChange(list)
     }
 
+    fillUpdateForm = () => {
+        this.setState({
+            fillUpdateForm: true
+        });
+    }
+
     render() {
         console.log("filter ", this.props)
         console.log("mi plants ", this.props.plants)
         const plantsToShow =
-            // this.state.filterBy === '' ?
             this.props.filter.length <= 0 ?
                 this.props.plants :
                 this.props.filter
@@ -73,7 +91,8 @@ class PlantList extends React.Component {
                                 <Plant plant={plant}
                                     deletePlant={this.deletePlant}
                                     filterByName={this.filterByName}
-                                    plantIsChosen={this.state.plantIsChosen} />
+                                    plantIsChosen={this.state.plantIsChosen}
+                                    fillUpdateForm={this.fillUpdateForm} />
                             </Grid>
                         ))}
                     </Grid>

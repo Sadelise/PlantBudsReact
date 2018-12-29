@@ -14,6 +14,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
+import BasicForm from './BasicForm'
 
 class PlantForm extends React.Component {
     state = {
@@ -100,7 +101,10 @@ class PlantForm extends React.Component {
             <div>
                 <Button variant="contained" color="primary" type="reset" onClick={this.show}>Lisää kasvi</Button>
                 <form onSubmit={this.addPlant} style={showWhenVisible}>
-                    <div>
+
+                    <BasicForm state={this.state}
+                        handleChange={this.handleChange} />
+                    {/* <div>
                         <FormControl >
                             <InputLabel htmlFor="name-simple">Suomenkielinen nimi</InputLabel>
                             <Input name="finnishName" value={this.state.finnishName} id="name-simple" onChange={this.handleChange} />
@@ -133,7 +137,7 @@ class PlantForm extends React.Component {
                             <InputLabel htmlFor="name-simple">Linkki kuvaan</InputLabel>
                             <Input name="imagelink" value={this.state.imagelink} id="name-simple" onChange={this.handleChange} />
                         </FormControl>
-                    </div>
+                    </div> */}
                     <div>
                         <FormControl component="fieldset">
                             <FormLabel component="legend">Kasvin tyyppi</FormLabel>

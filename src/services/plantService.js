@@ -12,3 +12,7 @@ export const deletePlant = deletedPlantId => async dispatch => {
     })
 }
 
+export const updatePlant = updatedPlant => async dispatch => {
+    plantsRef.update(updatedPlant);
+}
+
