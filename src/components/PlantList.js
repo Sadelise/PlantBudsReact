@@ -7,7 +7,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { filterChange } from '../reducers/filterReducer'
 
-
 class PlantList extends React.Component {
     constructor(props) {
         super(props)
@@ -21,6 +20,7 @@ class PlantList extends React.Component {
     deletePlant = (plant) => {
         this.props.deletePlant(plant.id)
     }
+
     filter = (name) => {
         var plantName = this.state.filterBy
         if (name !== undefined) {
@@ -65,8 +65,6 @@ class PlantList extends React.Component {
     }
 
     render() {
-        console.log("filter ", this.props)
-        console.log("mi plants ", this.props.plants)
         const plantsToShow =
             this.props.filter.length <= 0 ?
                 this.props.plants :
@@ -93,6 +91,7 @@ class PlantList extends React.Component {
                                     filterByName={this.filterByName}
                                     plantIsChosen={this.state.plantIsChosen}
                                     fillUpdateForm={this.fillUpdateForm} />
+
                             </Grid>
                         ))}
                     </Grid>

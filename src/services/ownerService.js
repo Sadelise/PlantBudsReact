@@ -17,9 +17,7 @@ export const loginFirebase = user => async dispatch => {
         .catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
-            console.log(errorCode, ' ', errorMessage)
         });
-        console.log(response)
     return response.user
 }
 
@@ -29,7 +27,6 @@ export const logoutFirebase = user => async dispatch => {
         .catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
-            console.log(errorCode, ' ', errorMessage)
         });
 }
 

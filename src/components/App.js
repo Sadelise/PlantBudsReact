@@ -1,11 +1,11 @@
 import React from 'react'
 import ConnectedPlantList from './PlantList';
-import PlantForm from './PlantForm';
+import PlantFormControl from './PlantFormControl';
 import NavBar from './NavBar'
 import { connect } from 'react-redux'
 import { plantInitialization } from '../reducers/reducer'
 import { plantsRef } from "../config/firebase";
-import IdentificationForm from './IdentificationForm';
+import IdentificationFormControl from './IdentificationFormControl';
 import { setOwner } from '../reducers/ownerReducer'
 import * as firebase from "firebase";
 
@@ -44,8 +44,8 @@ class App extends React.Component {
             return (
                 <div>
                     <NavBar />
-                    <PlantForm />
-                    <IdentificationForm />
+                    <PlantFormControl/>
+                    <IdentificationFormControl />
                     <ConnectedPlantList />
                 </div >
             )

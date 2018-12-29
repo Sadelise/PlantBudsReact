@@ -21,7 +21,6 @@ class LoginForm extends React.Component {
     }
 
     login = (event) => {
-        console.log("logging in")
         event.preventDefault()
         this.props.loginFirebase(this.state)
         // this.props.login(user)
@@ -29,7 +28,6 @@ class LoginForm extends React.Component {
     }
 
     logout = (event) => {
-        console.log("logging out")
         event.preventDefault()
         this.props.logoutFirebase(this.state)
         this.props.setOwner(null)
