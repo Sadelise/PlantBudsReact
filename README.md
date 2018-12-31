@@ -11,5 +11,5 @@ Users can add and delete plants. Contains a simplistic plant identification tool
 
 Currently if nothing matches the filters the application will show everything.
 
-[Käyttöohje](Kayttoohje.md)
+[Käyttöohje](Kayttoohje.md)  
 [Työaikakirjanpito](Tyoaikakirjanpito.md)
