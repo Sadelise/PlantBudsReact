@@ -41,6 +41,9 @@ const Plant = ({ plant, deletePlant, filterByName, plantIsChosen, fillUpdateForm
                   <Typography component="p">
                     Lehden muoto: {plant.leafShape}
                   </Typography>
+                  <CardActions>
+                    <Button variant="contained" color="secondary" type="reset" onClick={() => deletePlant(plant)}>poista</Button>
+                  </CardActions>
                 </div>
               </CardContent>
               <CardActions>
@@ -49,9 +52,7 @@ const Plant = ({ plant, deletePlant, filterByName, plantIsChosen, fillUpdateForm
                     </Button>
               </CardActions>
             </div>
-            <CardActions>
-              <Button variant="contained" color="secondary" type="reset" onClick={() => deletePlant(plant)}>poista</Button>
-            </CardActions>
+
             {/* <CardActions>
               <Button variant="contained" color="secondary" type="reset" onClick={() => fillUpdateForm(plant)}>muokkaa</Button>
             </CardActions> */}

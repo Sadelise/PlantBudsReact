@@ -93,7 +93,7 @@ class LoginForm extends React.Component {
                                 <InputLabel htmlFor="name-simple">Toista salasana</InputLabel>
                                 <Input name="repeatedpassword" value={this.state.repeatedpassword} id="name-simple" onChange={this.handleChange} />
                             </FormControl>
-                            <Button variant="contained" color="primary" type="submit">Rekisteröidy</Button>
+                            {/* <Button variant="contained" color="primary" type="submit">Rekisteröidy</Button> */}
                         </form>
                     </div>
                 </div>

@@ -37,6 +37,7 @@ class App extends React.Component {
             return (
                 <div>
                     <NavBar />
+                    <IdentificationFormControl />
                     <ConnectedPlantList />
                 </div>
             )
