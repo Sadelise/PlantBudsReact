@@ -11,6 +11,6 @@
 | 07.10. | 2 | Login toimimaan järkevämmin, form yläpalkkiin, nappien näkyvyys
 | 28.12. | 5.5 | Ympäristömuuttujat, deploy herokuun, herokussa ilmenevän bugin korjaus, kuvalinkin lisäys, tunnistusformin lisäys nappeineen, tunnistuksen filtteröinti, filtteröinti reducerin kautta |
 | 29.12 | 3.5 | Paremmat lomakkeet, refaktorointia, postauksen nappien toiminnan parannus |
-| 31.12. | 0.5 | Käyttöohje, Readme-viimeistely, painikkeiden hienosäätöä |
+| 31.12. | 1 | Käyttöohje, Readme-viimeistely, rekisteröinnin korjaus, painikkeiden hienosäätöä |
 
-Yhteensä: 37 h
+Yhteensä: 37.5 h

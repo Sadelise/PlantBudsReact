@@ -36,10 +36,13 @@ class LoginForm extends React.Component {
 
     showRegistration = (event) => {
         event.preventDefault()
-        this.reset()
+        this.setState({
+            showRegistration: true
+        });
     }
 
     register = (event) => {
+        console.log("reg")
         event.preventDefault()
         this.props.create(this.state)
         this.reset()
@@ -49,7 +52,8 @@ class LoginForm extends React.Component {
         this.setState({
             finnishName: '',
             scientificName: '',
-            description: ''
+            description: '',
+            showRegistration: false
         });
     }
 
@@ -93,7 +97,7 @@ class LoginForm extends React.Component {
                                 <InputLabel htmlFor="name-simple">Toista salasana</InputLabel>
                                 <Input name="repeatedpassword" value={this.state.repeatedpassword} id="name-simple" onChange={this.handleChange} />
                             </FormControl>
-                            {/* <Button variant="contained" color="primary" type="submit">Rekisteröidy</Button> */}
+                            <Button variant="contained" color="primary" type="submit">Lähetä</Button>
                         </form>
                     </div>
                 </div>
