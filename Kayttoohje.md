@@ -1,7 +1,7 @@
 Kirjautumaton käyttäjä:
 
 * Oletuksena sivulla näkyy kaikki järjestelmästä löytyvät kasvit. 
-* Klikkaamalla yksittäistä kasvikuvausta rajaat näytettävät kasvit kyseiseen kasviin ja saat näkyville lisätietoa kasvista, sekä poistopainikkeen. Poistopainikkeella voi poistaa kasvin. 
+* Klikkaamalla yksittäistä kasvikuvausta rajaat näytettävät kasvit kyseiseen kasviin ja saat näkyville lisätietoa kasvista, sekä poistopainikkeen. Poistopainikkeella voi poistaa kasvin. "Etsi kasvia googlesta" -linkkiä painamalla ohjaudut Googlen hakutulokseen kyseistä kasvia koskien.
 * "Etsi kasvia" -toiminnolla voi rajata näkyviä kasveja niiden suomenkielisen nimen perusteella. "Näytä kaikki" -painike poistaa rajoitteet. 
 * Rekisteröityminen: Klikkaa "Rekisteröidy"-painiketta navigaatiopalkissa. Kirjoita sähköpostiosoite ja salasana kahdesti (salasanan on oltava vähintään 6 merkkiä pitkä). Klikkaa "Lähetä". Applikaatio kirjautuu automaattisesti sisään kun rekisteröinti onnistuu. 
 * Navigaatiopalkin "kirjaudu sisään" -painikkeella kirjaudutaan sisään sen jälkeen kun on ensin täyttänyt sähköpostiosoitteen ja salasanan osoitettuihin kenttiin. 

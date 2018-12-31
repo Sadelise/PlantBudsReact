@@ -48,7 +48,7 @@ const Plant = ({ plant, deletePlant, filterByName, plantIsChosen, fillUpdateForm
               </CardContent>
               <CardActions>
                 <Button size="small" color="primary" href={googleAddress} target="_blank">
-                  Google the Plant
+                  Etsi kasvia Googlesta
                     </Button>
               </CardActions>
             </div>
